@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+      env: blue
+  template:
+    metadata:
+      labels:
+        app: myapp
+        env: blue
+    spec:
+      containers:
+        - name: myapp
+          image: your-image:tag  # Replace with your actual image name
+          ports:
+            - containerPort: 3000
