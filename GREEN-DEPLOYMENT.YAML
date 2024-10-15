@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green
+spec:
+  replicas: 0  # Set to 0 if you want to deploy but not run any instances initially
+  selector:
+    matchLabels:
+      app: myapp
+      env: green  # Match labels should include "env: green"
+  template:
+    metadata:
+      labels:
+        app: myapp
+        env: green  # Ensure the labels match the selector
+    spec:
+      containers:
+      - name: myapp
+        image: balav8/green-env  # Use your specified image
+        ports:
+        - containerPort: 3000
